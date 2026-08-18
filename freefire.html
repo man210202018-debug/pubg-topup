@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شحن Free Fire</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-effects">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
+    </div>
+
+    <div class="container">
+        <a href="index.html" class="back-home">← العودة للرئيسية</a>
+
+        <header>
+            <div class="hero">
+                <div class="hero-text">
+                    <span class="badge ff-badge">FREE FIRE</span>
+                    <h1>شحن <span class="highlight ff-highlight">Free Fire</span></h1>
+                    <p>اشحن الجواهر الخاصة بك بسرعة وأمان</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="form-section glass">
+            <div class="input-group">
+                <label for="playerId">معرف اللاعب (ID)</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">🎮</span>
+                    <input type="text" id="playerId" placeholder="أدخل معرف اللاعب هنا...">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="region">المنطقة</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">🌐</span>
+                    <select id="server">
+                        <option value="">اختر المنطقة</option>
+                        <option value="mena">الشرق الأوسط وشمال أفريقيا</option>
+                        <option value="asia">آسيا</option>
+                        <option value="europe">أوروبا</option>
+                        <option value="americas">الأمريكتين</option>
+                    </select>
+                </div>
+            </div>
+
+            <h2><span class="section-icon">💎</span> اختر باقة الشحن</h2>
+            <div class="packages">
+                <div class="package" data-uc="100" data-price="24.99">
+                    <div class="uc-amount">100</div>
+                    <div class="uc-label">جواهر</div>
+                    <div class="price">24.99 ج.م</div>
+                </div>
+                <div class="package" data-uc="310" data-price="74.99">
+                    <div class="uc-amount">310</div>
+                    <div class="uc-label">جواهر</div>
+                    <div class="price">74.99 ج.م</div>
+                </div>
+                <div class="package popular" data-uc="520" data-price="124.99">
+                    <div class="package-ribbon popular-ribbon">الأكثر مبيعاً</div>
+                    <div class="uc-amount">520</div>
+                    <div class="uc-label">جواهر</div>
+                    <div class="price">124.99 ج.م</div>
+                </div>
+                <div class="package" data-uc="1060" data-price="249.99">
+                    <div class="uc-amount">1060</div>
+                    <div class="uc-label">جواهر</div>
+                    <div class="price">249.99 ج.م</div>
+                </div>
+                <div class="package" data-uc="2200" data-price="499.99">
+                    <div class="uc-amount">2200</div>
+                    <div class="uc-label">جواهر</div>
+                    <div class="price">499.99 ج.م</div>
+                </div>
+                <div class="package" data-uc="5600" data-price="1249.99">
+                    <div class="package-ribbon">أكبر وفرة</div>
+                    <div class="uc-amount">5600</div>
+                    <div class="uc-label">جواهر</div>
+                    <div class="price">1249.99 ج.م</div>
+                </div>
+            </div>
+
+            <h2><span class="section-icon">💳</span> اختر طريقة الدفع</h2>
+            <div class="payment-methods">
+                <div class="payment-method" data-method="visa">
+                    <span class="payment-icon">💳</span>
+                    <span>فيزا / ماستركارد</span>
+                </div>
+                <div class="payment-method" data-method="paypal">
+                    <span class="payment-icon">🅿️</span>
+                    <span>PayPal</span>
+                </div>
+                <div class="payment-method vodafone-cash" data-method="vodafone">
+                    <span class="payment-icon">📱</span>
+                    <span>فودافون كاش</span>
+                </div>
+            </div>
+
+            <div class="vodafone-info" id="vodafoneInfo" style="display:none;">
+                <div class="vodafone-box glass">
+                    <h3>📲 ارسل المبلغ على فودافون كاش</h3>
+                    <div class="phone-number" id="phoneDisplay">01147062899</div>
+                    <p class="copy-hint">اضغط على الرقم لنسخه</p>
+                    <div class="upload-section">
+                        <label for="proofImage" class="upload-label">
+                            <span class="upload-icon">📸</span>
+                            <span>ارفع صورة إثبات التحويل</span>
+                            <span class="upload-hint">(صورة سكرين شوت للتحويل)</span>
+                        </label>
+                        <input type="file" id="proofImage" accept="image/*" hidden>
+                        <div class="image-preview" id="imagePreview" style="display:none;">
+                            <img id="previewImg" src="" alt="صورة الإثبات">
+                            <button type="button" class="remove-img" id="removeImg">✕</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary glass" id="summary" style="display: none;">
+                <h3>📋 ملخص الطلب</h3>
+                <div class="summary-row">
+                    <span>معرف اللاعب:</span>
+                    <span id="summaryId">-</span>
+                </div>
+                <div class="summary-row">
+                    <span>السيرفر:</span>
+                    <span id="summaryServer">-</span>
+                </div>
+                <div class="summary-row">
+                    <span>الباقة:</span>
+                    <span id="summaryPackage">-</span>
+                </div>
+                <div class="summary-row">
+                    <span>طريقة الدفع:</span>
+                    <span id="summaryPayment">-</span>
+                </div>
+                <div class="summary-row total">
+                    <span>الإجمالي:</span>
+                    <span id="summaryTotal">-</span>
+                </div>
+            </div>
+
+            <button class="buy-btn" id="buyBtn" disabled>
+                <span>اشحن الآن</span>
+                <span class="btn-icon">⚡</span>
+            </button>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>هذا موقع تعليمي فقط - جميع الأسعار تقريبية</p>
+                <a href="admin.html" class="admin-link">🔒 لوحة التحكم</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="config.js"></script>
+    <script>const GAME_NAME = 'freefire';</script>
+    <script src="script.js"></script>
+</body>
+</html>

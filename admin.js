@@ -1,10 +1,25 @@
 const ordersTable = document.getElementById('ordersTable');
 const searchInput = document.getElementById('searchInput');
 const filterStatus = document.getElementById('filterStatus');
+const filterGame = document.getElementById('filterGame');
 const exportBtn = document.getElementById('exportBtn');
 const clearBtn = document.getElementById('clearBtn');
 
 let allOrders = [];
+
+const gameNames = {
+    'pubg': 'PUBG',
+    'mlbb': 'Mobile Legends',
+    'freefire': 'Free Fire',
+    'unknown': 'غير معروفة'
+};
+
+const gameColors = {
+    'pubg': '#f97316',
+    'mlbb': '#a855f7',
+    'freefire': '#f43f5e',
+    'unknown': '#64748b'
+};
 
 async function loadOrders() {
     try {
@@ -19,26 +34,33 @@ async function loadOrders() {
 function renderOrders() {
     const search = searchInput.value.trim().toLowerCase();
     const status = filterStatus.value;
+    const game = filterGame.value;
 
     let filtered = allOrders.filter(order => {
         const matchSearch = order.player_id.toLowerCase().includes(search);
         const matchStatus = status === 'all' || order.status === status;
-        return matchSearch && matchStatus;
+        const matchGame = game === 'all' || order.game === game;
+        return matchSearch && matchStatus && matchGame;
     });
 
     if (filtered.length === 0) {
-        ordersTable.innerHTML = '<tr><td colspan="9" class="empty">لا توجد طلبات</td></tr>';
+        ordersTable.innerHTML = '<tr><td colspan="10" class="empty">لا توجد طلبات</td></tr>';
     } else {
-        ordersTable.innerHTML = filtered.map((order, index) => `
+        ordersTable.innerHTML = filtered.map((order, index) => {
+            const g = order.game || 'unknown';
+            const gName = gameNames[g] || g;
+            const gColor = gameColors[g] || '#64748b';
+            return `
             <tr>
                 <td>${index + 1}</td>
+                <td><span class="game-tag" style="background:${gColor}22;color:${gColor};border:1px solid ${gColor}44;">${gName}</span></td>
                 <td><strong>${order.player_id}</strong></td>
                 <td>${order.server}</td>
-                <td>${order.uc} UC</td>
+                <td>${order.uc}</td>
                 <td>${order.price} ج.م</td>
                 <td>
                     ${order.payment}
-                    ${order.proof_image ? `<button class="action-btn btn-view" onclick="viewImage('${order.id}')">📷 صورة</button>` : ''}
+                    ${order.proof_image ? `<button class="action-btn btn-view" onclick="viewImage('${order.id}')">📷</button>` : ''}
                 </td>
                 <td>${new Date(order.created_at).toLocaleString('ar-EG')}</td>
                 <td><span class="status-badge ${getStatusClass(order.status)}">${order.status}</span></td>
@@ -48,8 +70,8 @@ function renderOrders() {
                     ${order.status !== 'ملغي' && order.status !== 'مكتمل' ? `<button class="action-btn btn-cancel" onclick="updateStatus(${order.id}, 'ملغي')">إلغاء</button>` : ''}
                     <button class="action-btn btn-delete" onclick="deleteOrder(${order.id})">حذف</button>
                 </td>
-            </tr>
-        `).join('');
+            </tr>`;
+        }).join('');
     }
 
     updateStats();
@@ -86,9 +108,9 @@ function viewImage(orderId) {
                     <button class="modal-close" onclick="this.closest('.image-modal').remove()">✕</button>
                 </div>
                 <div class="modal-body">
+                    <p><strong>اللعبة:</strong> ${gameNames[order.game] || order.game}</p>
                     <p><strong>اللاعب:</strong> ${order.player_id}</p>
                     <p><strong>المبلغ:</strong> ${order.price} ج.م</p>
-                    <p><strong>الباقة:</strong> ${order.uc} UC</p>
                     <img src="${order.proof_image}" alt="إثبات التحويل">
                 </div>
             </div>
@@ -126,9 +148,9 @@ exportBtn.addEventListener('click', () => {
         return;
     }
 
-    let csv = 'معرف اللاعب,السيرفر,الباقة,المبلغ,طريقة الدفع,التاريخ,الحالة\n';
+    let csv = 'اللعبة,معرف اللاعب,السيرفر,الباقة,المبلغ,طريقة الدفع,التاريخ,الحالة\n';
     allOrders.forEach(order => {
-        csv += `${order.player_id},${order.server},${order.uc} UC,${order.price} ج.م,${order.payment},${new Date(order.created_at).toLocaleString('ar-EG')},${order.status}\n`;
+        csv += `${gameNames[order.game] || order.game},${order.player_id},${order.server},${order.uc},${order.price} ج.م,${order.payment},${new Date(order.created_at).toLocaleString('ar-EG')},${order.status}\n`;
     });
 
     const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' });
@@ -154,6 +176,7 @@ clearBtn.addEventListener('click', async () => {
 
 searchInput.addEventListener('input', renderOrders);
 filterStatus.addEventListener('change', renderOrders);
+filterGame.addEventListener('change', renderOrders);
 
 loadOrders();
 setInterval(loadOrders, 5000);

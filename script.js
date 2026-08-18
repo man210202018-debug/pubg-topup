@@ -140,6 +140,7 @@ buyBtn.addEventListener('click', async () => {
             price: selectedPackage.price,
             payment: getPaymentName(selectedPayment),
             status: 'جديد',
+            game: typeof GAME_NAME !== 'undefined' ? GAME_NAME : 'unknown',
             proof_image: proofImageBase64 || null
         });
 

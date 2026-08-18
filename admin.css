@@ -162,6 +162,15 @@ tr:hover {
     font-weight: bold;
 }
 
+.game-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
 .status-new {
     background: rgba(56, 139, 253, 0.2);
     color: #58a6ff;

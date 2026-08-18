@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شحن ببجي موبايل</title>
+    <title>شحن ألعاب الموبايل</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
@@ -16,151 +16,50 @@
 
     <div class="container">
         <header>
-            <div class="hero">
-                <img src="pubg-character.png" alt="PUBG" class="hero-img">
-                <div class="hero-text">
-                    <span class="badge">MOBILE UC TOP-UP</span>
-                    <h1>شحن <span class="highlight">PUBG</span> موبايل</h1>
-                    <p>اشحن UC الخاص بك بسرعة وأمان - أسرع خدمة شحن</p>
+            <div class="hero home-hero">
+                <div class="hero-text" style="text-align:center;">
+                    <span class="badge">GAME TOP-UP STORE</span>
+                    <h1>شحن <span class="highlight">ألعاب</span> الموبايل</h1>
+                    <p>اشحن عملاتك الرقمية بسرعة وأمان - أسرع خدمة شحن</p>
                 </div>
             </div>
         </header>
 
-        <div class="form-section glass">
-            <div class="input-group">
-                <label for="playerId">معرف اللاعب (ID)</label>
-                <div class="input-wrapper">
-                    <span class="input-icon">🎮</span>
-                    <input type="text" id="playerId" placeholder="أدخل معرف اللاعب هنا...">
-                </div>
-            </div>
+        <h2 class="games-title"><span class="section-icon">🎮</span> اختر اللعبة</h2>
 
-            <div class="input-group">
-                <label for="server">السيرفر</label>
-                <div class="input-wrapper">
-                    <span class="input-icon">🌐</span>
-                    <select id="server">
-                        <option value="">اختر السيرفر</option>
-                        <option value="middle-east">الشرق الأوسط</option>
-                        <option value="asia">آسيا</option>
-                        <option value="europe">أوروبا</option>
-                        <option value="north-america">أمريكا الشمالية</option>
-                        <option value="south-america">أمريكا الجنوبية</option>
-                        <option value="korea">كوريا</option>
-                        <option value="japan">اليابان</option>
-                    </select>
+        <div class="games-grid">
+            <a href="pubg.html" class="game-card">
+                <div class="game-card-img">
+                    <img src="pubg-icon.png" alt="PUBG">
                 </div>
-            </div>
+                <div class="game-card-info">
+                    <h3>PUBG Mobile</h3>
+                    <p>شحن UC</p>
+                    <span class="game-card-btn">اشحن الآن →</span>
+                </div>
+            </a>
 
-            <h2><span class="section-icon">💰</span> اختر باقة الشحن</h2>
-            <div class="packages">
-                <div class="package" data-uc="60" data-price="149.99">
-                    <div class="package-ribbon">رخيص</div>
-                    <div class="uc-amount">60</div>
-                    <div class="uc-label">UC</div>
-                    <div class="price">149.99 ج.م</div>
+            <a href="mlbb.html" class="game-card mlbb">
+                <div class="game-card-img">
+                    <img src="https://img.icons8.com/color/94/mobile-legends.png" alt="Mobile Legends">
                 </div>
-                <div class="package" data-uc="325" data-price="749.99">
-                    <div class="uc-amount">325</div>
-                    <div class="uc-label">UC</div>
-                    <div class="price">749.99 ج.م</div>
+                <div class="game-card-info">
+                    <h3>Mobile Legends</h3>
+                    <p>شحن ماسات</p>
+                    <span class="game-card-btn">اشحن الآن →</span>
                 </div>
-                <div class="package popular" data-uc="660" data-price="1499.99">
-                    <div class="package-ribbon popular-ribbon">الأكثر مبيعاً</div>
-                    <div class="uc-amount">660</div>
-                    <div class="uc-label">UC</div>
-                    <div class="price">1499.99 ج.م</div>
-                </div>
-                <div class="package" data-uc="1800" data-price="3749.99">
-                    <div class="uc-amount">1800</div>
-                    <div class="uc-label">UC</div>
-                    <div class="price">3749.99 ج.م</div>
-                </div>
-                <div class="package" data-uc="3850" data-price="7499.99">
-                    <div class="uc-amount">3850</div>
-                    <div class="uc-label">UC</div>
-                    <div class="price">7499.99 ج.م</div>
-                </div>
-                <div class="package" data-uc="8100" data-price="14999.99">
-                    <div class="package-ribbon">أكبر وفرة</div>
-                    <div class="uc-amount">8100</div>
-                    <div class="uc-label">UC</div>
-                    <div class="price">14999.99 ج.م</div>
-                </div>
-            </div>
+            </a>
 
-            <h2><span class="section-icon">💳</span> اختر طريقة الدفع</h2>
-            <div class="payment-methods">
-                <div class="payment-method" data-method="visa">
-                    <span class="payment-icon">💳</span>
-                    <span>فيزا / ماستركارد</span>
+            <a href="freefire.html" class="game-card freefire">
+                <div class="game-card-img">
+                    <img src="https://img.icons8.com/color/94/free-fire.png" alt="Free Fire">
                 </div>
-                <div class="payment-method" data-method="paypal">
-                    <span class="payment-icon">🅿️</span>
-                    <span>PayPal</span>
+                <div class="game-card-info">
+                    <h3>Free Fire</h3>
+                    <p>شحن جواهر</p>
+                    <span class="game-card-btn">اشحن الآن →</span>
                 </div>
-                <div class="payment-method" data-method="stc">
-                    <span class="payment-icon">📱</span>
-                    <span>STC Pay</span>
-                </div>
-                <div class="payment-method" data-method="apple">
-                    <span class="payment-icon">🍎</span>
-                    <span>Apple Pay</span>
-                </div>
-                <div class="payment-method vodafone-cash" data-method="vodafone">
-                    <span class="payment-icon">📱</span>
-                    <span>فودافون كاش</span>
-                </div>
-            </div>
-
-            <div class="vodafone-info" id="vodafoneInfo" style="display:none;">
-                <div class="vodafone-box glass">
-                    <h3>📲 ارسل المبلغ على فودافون كاش</h3>
-                    <div class="phone-number" id="phoneDisplay">01147062899</div>
-                    <p class="copy-hint">اضغط على الرقم لنسخه</p>
-                    <div class="upload-section">
-                        <label for="proofImage" class="upload-label">
-                            <span class="upload-icon">📸</span>
-                            <span>ارفع صورة إثبات التحويل</span>
-                            <span class="upload-hint">(صورة سكرين شوت للتحويل)</span>
-                        </label>
-                        <input type="file" id="proofImage" accept="image/*" hidden>
-                        <div class="image-preview" id="imagePreview" style="display:none;">
-                            <img id="previewImg" src="" alt="صورة الإثبات">
-                            <button type="button" class="remove-img" id="removeImg">✕</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="summary glass" id="summary" style="display: none;">
-                <h3>📋 ملخص الطلب</h3>
-                <div class="summary-row">
-                    <span>معرف اللاعب:</span>
-                    <span id="summaryId">-</span>
-                </div>
-                <div class="summary-row">
-                    <span>السيرفر:</span>
-                    <span id="summaryServer">-</span>
-                </div>
-                <div class="summary-row">
-                    <span>الباقة:</span>
-                    <span id="summaryPackage">-</span>
-                </div>
-                <div class="summary-row">
-                    <span>طريقة الدفع:</span>
-                    <span id="summaryPayment">-</span>
-                </div>
-                <div class="summary-row total">
-                    <span>الإجمالي:</span>
-                    <span id="summaryTotal">-</span>
-                </div>
-            </div>
-
-            <button class="buy-btn" id="buyBtn" disabled>
-                <span>اشحن الآن</span>
-                <span class="btn-icon">⚡</span>
-            </button>
+            </a>
         </div>
 
         <footer>
@@ -171,7 +70,10 @@
         </footer>
     </div>
 
-    <script src="config.js"></script>
-    <script src="script.js"></script>
+    <script>
+        document.querySelectorAll('.games-title').forEach(el => {
+            el.style.cssText = 'color:#f1f5f9;font-size:1.5rem;font-weight:700;margin:10px 0 20px;display:flex;align-items:center;gap:10px;';
+        });
+    </script>
 </body>
 </html>
