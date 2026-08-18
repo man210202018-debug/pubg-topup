@@ -36,7 +36,10 @@ function renderOrders() {
                 <td>${order.server}</td>
                 <td>${order.uc} UC</td>
                 <td>$${order.price}</td>
-                <td>${order.payment}</td>
+                <td>
+                    ${order.payment}
+                    ${order.proof_image ? `<button class="action-btn btn-view" onclick="viewImage('${order.id}')">📷 صورة</button>` : ''}
+                </td>
                 <td>${new Date(order.created_at).toLocaleString('ar-EG')}</td>
                 <td><span class="status-badge ${getStatusClass(order.status)}">${order.status}</span></td>
                 <td>
@@ -67,6 +70,31 @@ function updateStats() {
     document.getElementById('newOrders').textContent = allOrders.filter(o => o.status === 'جديد').length;
     const revenue = allOrders.filter(o => o.status !== 'ملغي').reduce((sum, o) => sum + parseFloat(o.price), 0);
     document.getElementById('totalRevenue').textContent = '$' + revenue.toFixed(2);
+}
+
+function viewImage(orderId) {
+    const order = allOrders.find(o => o.id == orderId);
+    if (!order || !order.proof_image) return;
+
+    const modal = document.createElement('div');
+    modal.className = 'image-modal';
+    modal.innerHTML = `
+        <div class="modal-overlay" onclick="this.parentElement.remove()">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <div class="modal-header">
+                    <h3>صورة إثبات التحويل</h3>
+                    <button class="modal-close" onclick="this.closest('.image-modal').remove()">✕</button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>اللاعب:</strong> ${order.player_id}</p>
+                    <p><strong>المبلغ:</strong> $${order.price}</p>
+                    <p><strong>الباقة:</strong> ${order.uc} UC</p>
+                    <img src="${order.proof_image}" alt="إثبات التحويل">
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
 }
 
 async function updateStatus(id, newStatus) {

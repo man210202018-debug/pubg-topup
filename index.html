@@ -107,6 +107,30 @@
                     <span class="payment-icon">🍎</span>
                     <span>Apple Pay</span>
                 </div>
+                <div class="payment-method vodafone-cash" data-method="vodafone">
+                    <span class="payment-icon">📱</span>
+                    <span>فودافون كاش</span>
+                </div>
+            </div>
+
+            <div class="vodafone-info" id="vodafoneInfo" style="display:none;">
+                <div class="vodafone-box glass">
+                    <h3>📲 ارسل المبلغ على فودافون كاش</h3>
+                    <div class="phone-number" id="phoneDisplay">01147062899</div>
+                    <p class="copy-hint">اضغط على الرقم لنسخه</p>
+                    <div class="upload-section">
+                        <label for="proofImage" class="upload-label">
+                            <span class="upload-icon">📸</span>
+                            <span>ارفع صورة إثبات التحويل</span>
+                            <span class="upload-hint">(صورة سكرين شوت للتحويل)</span>
+                        </label>
+                        <input type="file" id="proofImage" accept="image/*" hidden>
+                        <div class="image-preview" id="imagePreview" style="display:none;">
+                            <img id="previewImg" src="" alt="صورة الإثبات">
+                            <button type="button" class="remove-img" id="removeImg">✕</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="summary glass" id="summary" style="display: none;">

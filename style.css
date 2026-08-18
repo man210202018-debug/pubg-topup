@@ -331,7 +331,7 @@ h2 {
 
 .payment-methods {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
 }
 
@@ -344,6 +344,7 @@ h2 {
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -361,8 +362,127 @@ h2 {
     box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
 }
 
+.vodafone-cash {
+    border-color: rgba(229, 0, 40, 0.3) !important;
+}
+
+.vodafone-cash:hover,
+.vodafone-cash.selected {
+    border-color: #e50028 !important;
+    background: rgba(229, 0, 40, 0.12) !important;
+    box-shadow: 0 0 20px rgba(229, 0, 40, 0.15) !important;
+}
+
 .payment-icon {
     font-size: 1.5rem;
+}
+
+.vodafone-info {
+    margin-top: 20px;
+}
+
+.vodafone-box {
+    padding: 25px;
+    text-align: center;
+}
+
+.vodafone-box h3 {
+    color: #e50028;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.phone-number {
+    display: inline-block;
+    background: rgba(229, 0, 40, 0.15);
+    border: 2px solid rgba(229, 0, 40, 0.3);
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+    direction: ltr;
+}
+
+.phone-number:hover {
+    background: rgba(229, 0, 40, 0.25);
+    transform: scale(1.05);
+}
+
+.copy-hint {
+    color: #64748b;
+    font-size: 0.8rem;
+    margin-top: 8px;
+}
+
+.upload-section {
+    margin-top: 20px;
+}
+
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 30px;
+    border: 2px dashed rgba(229, 0, 40, 0.3);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: rgba(229, 0, 40, 0.03);
+}
+
+.upload-label:hover {
+    border-color: #e50028;
+    background: rgba(229, 0, 40, 0.08);
+}
+
+.upload-icon {
+    font-size: 2.5rem;
+}
+
+.upload-hint {
+    color: #64748b;
+    font-size: 0.8rem;
+}
+
+.image-preview {
+    position: relative;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.image-preview img {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 12px;
+    border: 2px solid rgba(229, 0, 40, 0.3);
+}
+
+.remove-img {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #e50028;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.remove-img:hover {
+    background: #ff1744;
+    transform: scale(1.1);
 }
 
 .summary {
