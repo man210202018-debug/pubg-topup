@@ -6,7 +6,12 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('https://wallpapers.com/images/high/pubg-season-3-sanhok-the-ruins-landmark-7gulw7i0pspusp8s.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     min-height: 100vh;
     color: #fff;
 }
