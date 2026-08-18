@@ -61,7 +61,7 @@ function getPaymentName(method) {
     return names[method] || method;
 }
 
-buyBtn.addEventListener('click', () => {
+buyBtn.addEventListener('click', async () => {
     const id = playerId.value.trim();
     if (!id) {
         alert('من فضلك أدخل معرف اللاعب!');
@@ -80,20 +80,25 @@ buyBtn.addEventListener('click', () => {
         return;
     }
 
-    const order = {
-        id: Date.now(),
-        playerId: id,
+    buyBtn.disabled = true;
+    buyBtn.textContent = 'جاري الإرسال...';
+
+    const { error } = await supabase.from('orders').insert({
+        player_id: id,
         server: server.options[server.selectedIndex].text,
         uc: selectedPackage.uc,
         price: selectedPackage.price,
         payment: getPaymentName(selectedPayment),
-        status: 'جديد',
-        date: new Date().toLocaleString('ar-EG')
-    };
+        status: 'جديد'
+    });
 
-    let orders = JSON.parse(localStorage.getItem('pubgOrders')) || [];
-    orders.unshift(order);
-    localStorage.setItem('pubgOrders', JSON.stringify(orders));
+    if (error) {
+        alert('حدث خطأ! حاول مرة أخرى.');
+        console.error(error);
+        buyBtn.disabled = false;
+        buyBtn.textContent = 'اشحن الآن';
+        return;
+    }
 
     alert('تم استلام طلبك بنجاح! 🎉\n\nمعرف اللاعب: ' + id + '\nالباقة: ' + selectedPackage.uc + ' UC\nالمبلغ: $' + selectedPackage.price);
 
@@ -105,4 +110,5 @@ buyBtn.addEventListener('click', () => {
     paymentMethods.forEach(m => m.classList.remove('selected'));
     summary.style.display = 'none';
     buyBtn.disabled = true;
+    buyBtn.textContent = 'اشحن الآن';
 });
