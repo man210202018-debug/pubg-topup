@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    color: #fff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 40px 0;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+header p {
+    color: #aaa;
+    font-size: 1.1rem;
+}
+
+.form-section {
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #f39c12;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: #f39c12;
+}
+
+.input-group input::placeholder {
+    color: #888;
+}
+
+.input-group select option {
+    background: #1a1a2e;
+    color: #fff;
+}
+
+h2 {
+    margin: 25px 0 15px;
+    color: #f39c12;
+    font-size: 1.3rem;
+}
+
+.packages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.package {
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.package:hover {
+    transform: translateY(-5px);
+    border-color: #f39c12;
+    background: rgba(243, 156, 18, 0.1);
+}
+
+.package.selected {
+    border-color: #f39c12;
+    background: rgba(243, 156, 18, 0.2);
+    box-shadow: 0 0 20px rgba(243, 156, 18, 0.3);
+}
+
+.uc-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.uc-amount {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.price {
+    color: #2ecc71;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.payment-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.payment-method {
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.payment-method:hover {
+    transform: translateY(-3px);
+    border-color: #3498db;
+    background: rgba(52, 152, 219, 0.1);
+}
+
+.payment-method.selected {
+    border-color: #3498db;
+    background: rgba(52, 152, 219, 0.2);
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.3);
+}
+
+.payment-icon {
+    font-size: 1.5rem;
+}
+
+.summary {
+    background: rgba(0,0,0,0.3);
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.summary h3 {
+    color: #f39c12;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.summary-row.total {
+    border-bottom: none;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2ecc71;
+    padding-top: 15px;
+}
+
+.buy-btn {
+    width: 100%;
+    padding: 18px;
+    margin-top: 25px;
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.buy-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(243, 156, 18, 0.4);
+}
+
+.buy-btn:disabled {
+    background: #555;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 0;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.admin-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 25px;
+    background: rgba(255,255,255,0.1);
+    color: #f39c12;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 1px solid rgba(243, 156, 18, 0.3);
+    transition: all 0.3s;
+}
+
+.admin-link:hover {
+    background: rgba(243, 156, 18, 0.2);
+    border-color: #f39c12;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .packages {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .payment-methods {
+        grid-template-columns: 1fr;
+    }
+}

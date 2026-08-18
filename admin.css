@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #21262d 100%);
+    min-height: 100vh;
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 30px 0;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #58a6ff;
+}
+
+header p {
+    color: #8b949e;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #58a6ff;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: #8b949e;
+    font-size: 0.9rem;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.controls input,
+.controls select {
+    padding: 12px 15px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.controls input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.controls input:focus,
+.controls select:focus {
+    outline: none;
+    border-color: #58a6ff;
+}
+
+.controls select option {
+    background: #161b22;
+}
+
+.controls button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+#exportBtn {
+    background: #238636;
+    color: #fff;
+}
+
+#exportBtn:hover {
+    background: #2ea043;
+}
+
+#clearBtn {
+    background: #da3633;
+    color: #fff;
+}
+
+#clearBtn:hover {
+    background: #f85149;
+}
+
+.table-container {
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: rgba(0,0,0,0.3);
+    padding: 15px 10px;
+    text-align: right;
+    font-weight: bold;
+    color: #58a6ff;
+    white-space: nowrap;
+}
+
+td {
+    padding: 12px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    white-space: nowrap;
+}
+
+tr:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+.empty {
+    text-align: center;
+    color: #8b949e;
+    padding: 40px !important;
+}
+
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.status-new {
+    background: rgba(56, 139, 253, 0.2);
+    color: #58a6ff;
+}
+
+.status-progress {
+    background: rgba(210, 153, 34, 0.2);
+    color: #d29922;
+}
+
+.status-done {
+    background: rgba(35, 134, 54, 0.2);
+    color: #3fb950;
+}
+
+.status-cancelled {
+    background: rgba(218, 54, 51, 0.2);
+    color: #f85149;
+}
+
+.action-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-left: 5px;
+    transition: all 0.3s;
+}
+
+.btn-progress {
+    background: rgba(210, 153, 34, 0.3);
+    color: #d29922;
+}
+
+.btn-done {
+    background: rgba(35, 134, 54, 0.3);
+    color: #3fb950;
+}
+
+.btn-cancel {
+    background: rgba(218, 54, 51, 0.3);
+    color: #f85149;
+}
+
+.btn-delete {
+    background: rgba(218, 54, 51, 0.5);
+    color: #fff;
+}
+
+.action-btn:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    text-align: center;
+    padding: 30px 0;
+    color: #8b949e;
+    font-size: 0.85rem;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 25px;
+    background: rgba(255,255,255,0.05);
+    color: #58a6ff;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 1px solid rgba(88, 166, 255, 0.3);
+    transition: all 0.3s;
+}
+
+.back-link:hover {
+    background: rgba(88, 166, 255, 0.1);
+    border-color: #58a6ff;
+}
+
+@media (max-width: 900px) {
+    .table-container {
+        overflow-x: auto;
+    }
+}
