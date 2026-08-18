@@ -83,32 +83,30 @@ buyBtn.addEventListener('click', async () => {
     buyBtn.disabled = true;
     buyBtn.textContent = 'جاري الإرسال...';
 
-    const { error } = await _supabase.from('orders').insert({
-        player_id: id,
-        server: server.options[server.selectedIndex].text,
-        uc: selectedPackage.uc,
-        price: selectedPackage.price,
-        payment: getPaymentName(selectedPayment),
-        status: 'جديد'
-    });
+    try {
+        await db.insert('orders', {
+            player_id: id,
+            server: server.options[server.selectedIndex].text,
+            uc: selectedPackage.uc,
+            price: selectedPackage.price,
+            payment: getPaymentName(selectedPayment),
+            status: 'جديد'
+        });
 
-    if (error) {
+        alert('تم استلام طلبك بنجاح! 🎉\n\nمعرف اللاعب: ' + id + '\nالباقة: ' + selectedPackage.uc + ' UC\nالمبلغ: $' + selectedPackage.price);
+
+        playerId.value = '';
+        server.value = '';
+        selectedPackage = null;
+        selectedPayment = null;
+        packages.forEach(p => p.classList.remove('selected'));
+        paymentMethods.forEach(m => m.classList.remove('selected'));
+        summary.style.display = 'none';
+    } catch (err) {
         alert('حدث خطأ! حاول مرة أخرى.');
-        console.error(error);
-        buyBtn.disabled = false;
-        buyBtn.textContent = 'اشحن الآن';
-        return;
+        console.error(err);
     }
 
-    alert('تم استلام طلبك بنجاح! 🎉\n\nمعرف اللاعب: ' + id + '\nالباقة: ' + selectedPackage.uc + ' UC\nالمبلغ: $' + selectedPackage.price);
-
-    playerId.value = '';
-    server.value = '';
-    selectedPackage = null;
-    selectedPayment = null;
-    packages.forEach(p => p.classList.remove('selected'));
-    paymentMethods.forEach(m => m.classList.remove('selected'));
-    summary.style.display = 'none';
     buyBtn.disabled = true;
     buyBtn.textContent = 'اشحن الآن';
 });

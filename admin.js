@@ -7,18 +7,13 @@ const clearBtn = document.getElementById('clearBtn');
 let allOrders = [];
 
 async function loadOrders() {
-    const { data, error } = await _supabase
-        .from('orders')
-        .select('*')
-        .order('created_at', { ascending: false });
-
-    if (error) {
-        console.error(error);
-        return;
+    try {
+        const data = await db.select('orders', 'order=created_at.desc');
+        allOrders = data || [];
+        renderOrders();
+    } catch (err) {
+        console.error(err);
     }
-
-    allOrders = data || [];
-    renderOrders();
 }
 
 function renderOrders() {
@@ -75,36 +70,26 @@ function updateStats() {
 }
 
 async function updateStatus(id, newStatus) {
-    const { error } = await _supabase
-        .from('orders')
-        .update({ status: newStatus })
-        .eq('id', id);
-
-    if (error) {
-        console.error(error);
-        return;
+    try {
+        await db.update('orders', { status: newStatus }, `id=eq.${id}`);
+        const order = allOrders.find(o => o.id === id);
+        if (order) order.status = newStatus;
+        renderOrders();
+    } catch (err) {
+        console.error(err);
     }
-
-    const order = allOrders.find(o => o.id === id);
-    if (order) order.status = newStatus;
-    renderOrders();
 }
 
 async function deleteOrder(id) {
     if (!confirm('هل أنت متأكد من حذف هذا الطلب؟')) return;
 
-    const { error } = await _supabase
-        .from('orders')
-        .delete()
-        .eq('id', id);
-
-    if (error) {
-        console.error(error);
-        return;
+    try {
+        await db.remove('orders', `id=eq.${id}`);
+        allOrders = allOrders.filter(o => o.id !== id);
+        renderOrders();
+    } catch (err) {
+        console.error(err);
     }
-
-    allOrders = allOrders.filter(o => o.id !== id);
-    renderOrders();
 }
 
 exportBtn.addEventListener('click', () => {
@@ -128,26 +113,19 @@ exportBtn.addEventListener('click', () => {
 clearBtn.addEventListener('click', async () => {
     if (!confirm('هل أنت متأكد من مسح جميع الطلبات؟')) return;
 
-    const { error } = await _supabase.from('orders').delete().neq('id', 0);
-    if (error) {
-        console.error(error);
-        return;
+    try {
+        for (const order of allOrders) {
+            await db.remove('orders', `id=eq.${order.id}`);
+        }
+        allOrders = [];
+        renderOrders();
+    } catch (err) {
+        console.error(err);
     }
-
-    allOrders = [];
-    renderOrders();
 });
 
 searchInput.addEventListener('input', renderOrders);
 filterStatus.addEventListener('change', renderOrders);
 
 loadOrders();
-
-_supabase
-    .channel('orders-channel')
-    .on('postgres_changes', { event: '*', schema: 'public', table: 'orders' }, (payload) => {
-        loadOrders();
-    })
-    .subscribe();
-
 setInterval(loadOrders, 5000);
