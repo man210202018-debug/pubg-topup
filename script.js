@@ -83,7 +83,7 @@ buyBtn.addEventListener('click', async () => {
     buyBtn.disabled = true;
     buyBtn.textContent = 'جاري الإرسال...';
 
-    const { error } = await supabase.from('orders').insert({
+    const { error } = await _supabase.from('orders').insert({
         player_id: id,
         server: server.options[server.selectedIndex].text,
         uc: selectedPackage.uc,

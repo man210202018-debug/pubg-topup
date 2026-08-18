@@ -7,7 +7,7 @@ const clearBtn = document.getElementById('clearBtn');
 let allOrders = [];
 
 async function loadOrders() {
-    const { data, error } = await supabase
+    const { data, error } = await _supabase
         .from('orders')
         .select('*')
         .order('created_at', { ascending: false });
@@ -75,7 +75,7 @@ function updateStats() {
 }
 
 async function updateStatus(id, newStatus) {
-    const { error } = await supabase
+    const { error } = await _supabase
         .from('orders')
         .update({ status: newStatus })
         .eq('id', id);
@@ -93,7 +93,7 @@ async function updateStatus(id, newStatus) {
 async function deleteOrder(id) {
     if (!confirm('هل أنت متأكد من حذف هذا الطلب؟')) return;
 
-    const { error } = await supabase
+    const { error } = await _supabase
         .from('orders')
         .delete()
         .eq('id', id);
@@ -128,7 +128,7 @@ exportBtn.addEventListener('click', () => {
 clearBtn.addEventListener('click', async () => {
     if (!confirm('هل أنت متأكد من مسح جميع الطلبات؟')) return;
 
-    const { error } = await supabase.from('orders').delete().neq('id', 0);
+    const { error } = await _supabase.from('orders').delete().neq('id', 0);
     if (error) {
         console.error(error);
         return;
@@ -142,3 +142,12 @@ searchInput.addEventListener('input', renderOrders);
 filterStatus.addEventListener('change', renderOrders);
 
 loadOrders();
+
+_supabase
+    .channel('orders-channel')
+    .on('postgres_changes', { event: '*', schema: 'public', table: 'orders' }, (payload) => {
+        loadOrders();
+    })
+    .subscribe();
+
+setInterval(loadOrders, 5000);
