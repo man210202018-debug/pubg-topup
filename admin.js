@@ -35,7 +35,7 @@ function renderOrders() {
                 <td><strong>${order.player_id}</strong></td>
                 <td>${order.server}</td>
                 <td>${order.uc} UC</td>
-                <td>$${order.price}</td>
+                <td>${order.price} ج.م</td>
                 <td>
                     ${order.payment}
                     ${order.proof_image ? `<button class="action-btn btn-view" onclick="viewImage('${order.id}')">📷 صورة</button>` : ''}
@@ -69,7 +69,7 @@ function updateStats() {
     document.getElementById('totalOrders').textContent = allOrders.length;
     document.getElementById('newOrders').textContent = allOrders.filter(o => o.status === 'جديد').length;
     const revenue = allOrders.filter(o => o.status !== 'ملغي').reduce((sum, o) => sum + parseFloat(o.price), 0);
-    document.getElementById('totalRevenue').textContent = '$' + revenue.toFixed(2);
+    document.getElementById('totalRevenue').textContent = revenue.toFixed(2) + ' ج.م';
 }
 
 function viewImage(orderId) {
@@ -87,7 +87,7 @@ function viewImage(orderId) {
                 </div>
                 <div class="modal-body">
                     <p><strong>اللاعب:</strong> ${order.player_id}</p>
-                    <p><strong>المبلغ:</strong> $${order.price}</p>
+                    <p><strong>المبلغ:</strong> ${order.price} ج.م</p>
                     <p><strong>الباقة:</strong> ${order.uc} UC</p>
                     <img src="${order.proof_image}" alt="إثبات التحويل">
                 </div>
@@ -128,7 +128,7 @@ exportBtn.addEventListener('click', () => {
 
     let csv = 'معرف اللاعب,السيرفر,الباقة,المبلغ,طريقة الدفع,التاريخ,الحالة\n';
     allOrders.forEach(order => {
-        csv += `${order.player_id},${order.server},${order.uc} UC,$${order.price},${order.payment},${new Date(order.created_at).toLocaleString('ar-EG')},${order.status}\n`;
+        csv += `${order.player_id},${order.server},${order.uc} UC,${order.price} ج.م,${order.payment},${new Date(order.created_at).toLocaleString('ar-EG')},${order.status}\n`;
     });
 
     const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' });

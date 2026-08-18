@@ -88,7 +88,7 @@ function updateSummary() {
         document.getElementById('summaryServer').textContent = server.options[server.selectedIndex].text;
         document.getElementById('summaryPackage').textContent = selectedPackage.uc + ' UC';
         document.getElementById('summaryPayment').textContent = getPaymentName(selectedPayment);
-        document.getElementById('summaryTotal').textContent = '$' + selectedPackage.price;
+        document.getElementById('summaryTotal').textContent = selectedPackage.price + ' ج.م';
     } else {
         summary.style.display = 'none';
         buyBtn.disabled = true;
@@ -143,7 +143,7 @@ buyBtn.addEventListener('click', async () => {
             proof_image: proofImageBase64 || null
         });
 
-        alert('تم استلام طلبك بنجاح! 🎉\n\nمعرف اللاعب: ' + id + '\nالباقة: ' + selectedPackage.uc + ' UC\nالمبلغ: $' + selectedPackage.price);
+        alert('تم استلام طلبك بنجاح! 🎉\n\nمعرف اللاعب: ' + id + '\nالباقة: ' + selectedPackage.uc + ' UC\nالمبلغ: ' + selectedPackage.price + ' ج.م');
 
         playerId.value = '';
         server.value = '';
