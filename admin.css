@@ -240,6 +240,89 @@ footer {
     border-color: #58a6ff;
 }
 
+.login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #21262d 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.login-box {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    width: 350px;
+}
+
+.login-box h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #58a6ff;
+}
+
+.login-box p {
+    color: #8b949e;
+    margin-bottom: 25px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+    letter-spacing: 10px;
+    margin-bottom: 15px;
+}
+
+.login-box input:focus {
+    outline: none;
+    border-color: #58a6ff;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 15px;
+    background: #238636;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.login-box button:hover {
+    background: #2ea043;
+}
+
+.error-msg {
+    color: #f85149 !important;
+    margin-top: 10px !important;
+    font-size: 0.9rem;
+}
+
+.logout {
+    background: rgba(255,255,255,0.1) !important;
+    color: #f85149 !important;
+}
+
+.logout:hover {
+    background: rgba(218, 54, 51, 0.3) !important;
+}
+
 @media (max-width: 900px) {
     .table-container {
         overflow-x: auto;

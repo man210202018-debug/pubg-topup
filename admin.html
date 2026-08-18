@@ -7,7 +7,17 @@
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <div class="container">
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <h2>🔒 لوحة التحكم</h2>
+            <p>أدخل كلمة المرور للدخول</p>
+            <input type="password" id="passwordInput" placeholder="كلمة المرور" maxlength="4">
+            <button id="loginBtn">دخول</button>
+            <p class="error-msg" id="errorMsg"></p>
+        </div>
+    </div>
+
+    <div class="container" id="dashboard" style="display:none;">
         <header>
             <h1>📋 لوحة التحكم</h1>
             <p>إدارة طلبات شحن ببجي موبايل</p>
@@ -39,6 +49,7 @@
             </select>
             <button id="exportBtn">📥 تصدير CSV</button>
             <button id="clearBtn" class="danger">🗑️ مسح الكل</button>
+            <button id="logoutBtn" class="logout">🚪 خروج</button>
         </div>
 
         <div class="table-container">
@@ -72,6 +83,44 @@
 
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script src="config.js"></script>
+    <script>
+        const ADMIN_PASSWORD = '4444';
+        const loginOverlay = document.getElementById('loginOverlay');
+        const dashboard = document.getElementById('dashboard');
+        const passwordInput = document.getElementById('passwordInput');
+        const loginBtn = document.getElementById('loginBtn');
+        const errorMsg = document.getElementById('errorMsg');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        if (sessionStorage.getItem('adminAuth') === 'true') {
+            loginOverlay.style.display = 'none';
+            dashboard.style.display = 'block';
+        }
+
+        loginBtn.addEventListener('click', () => {
+            if (passwordInput.value === ADMIN_PASSWORD) {
+                sessionStorage.setItem('adminAuth', 'true');
+                loginOverlay.style.display = 'none';
+                dashboard.style.display = 'block';
+            } else {
+                errorMsg.textContent = 'كلمة المرور خاطئة!';
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        });
+
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') loginBtn.click();
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            sessionStorage.removeItem('adminAuth');
+            loginOverlay.style.display = 'flex';
+            dashboard.style.display = 'none';
+            passwordInput.value = '';
+            errorMsg.textContent = '';
+        });
+    </script>
     <script src="admin.js"></script>
 </body>
 </html>
