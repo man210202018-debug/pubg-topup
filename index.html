@@ -5,69 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>شحن ببجي موبايل</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="bg-effects">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
+    </div>
+
     <div class="container">
         <header>
-            <h1>🔥 شحن ببجي موبايل 🔥</h1>
-            <p>اشحن UC الخاص بك بسهولة وأمان</p>
+            <div class="hero">
+                <img src="pubg-character.png" alt="PUBG" class="hero-img">
+                <div class="hero-text">
+                    <span class="badge">MOBILE UC TOP-UP</span>
+                    <h1>شحن <span class="highlight">PUBG</span> موبايل</h1>
+                    <p>اشحن UC الخاص بك بسرعة وأمان - أسرع خدمة شحن</p>
+                </div>
+            </div>
         </header>
 
-        <div class="form-section">
+        <div class="form-section glass">
             <div class="input-group">
                 <label for="playerId">معرف اللاعب (ID)</label>
-                <input type="text" id="playerId" placeholder="أدخل معرف اللاعب">
+                <div class="input-wrapper">
+                    <span class="input-icon">🎮</span>
+                    <input type="text" id="playerId" placeholder="أدخل معرف اللاعب هنا...">
+                </div>
             </div>
 
             <div class="input-group">
                 <label for="server">السيرفر</label>
-                <select id="server">
-                    <option value="">اختر السيرفر</option>
-                    <option value="middle-east">الشرق الأوسط</option>
-                    <option value="asia">آسيا</option>
-                    <option value="europe">أوروبا</option>
-                    <option value="north-america">أمريكا الشمالية</option>
-                    <option value="south-america">أمريكا الجنوبية</option>
-                    <option value="korea">كوريا</option>
-                    <option value="japan">اليابان</option>
-                </select>
+                <div class="input-wrapper">
+                    <span class="input-icon">🌐</span>
+                    <select id="server">
+                        <option value="">اختر السيرفر</option>
+                        <option value="middle-east">الشرق الأوسط</option>
+                        <option value="asia">آسيا</option>
+                        <option value="europe">أوروبا</option>
+                        <option value="north-america">أمريكا الشمالية</option>
+                        <option value="south-america">أمريكا الجنوبية</option>
+                        <option value="korea">كوريا</option>
+                        <option value="japan">اليابان</option>
+                    </select>
+                </div>
             </div>
 
-            <h2>اختر باقة الشحن</h2>
+            <h2><span class="section-icon">💰</span> اختر باقة الشحن</h2>
             <div class="packages">
                 <div class="package" data-uc="60" data-price="2.99">
-                    <div class="uc-icon">💰</div>
-                    <div class="uc-amount">60 UC</div>
+                    <div class="package-ribbon">رخيص</div>
+                    <div class="uc-amount">60</div>
+                    <div class="uc-label">UC</div>
                     <div class="price">$2.99</div>
                 </div>
                 <div class="package" data-uc="325" data-price="14.99">
-                    <div class="uc-icon">💰💰</div>
-                    <div class="uc-amount">325 UC</div>
+                    <div class="uc-amount">325</div>
+                    <div class="uc-label">UC</div>
                     <div class="price">$14.99</div>
                 </div>
-                <div class="package" data-uc="660" data-price="29.99">
-                    <div class="uc-icon">💰💰💰</div>
-                    <div class="uc-amount">660 UC</div>
+                <div class="package popular" data-uc="660" data-price="29.99">
+                    <div class="package-ribbon popular-ribbon">الأكثر مبيعاً</div>
+                    <div class="uc-amount">660</div>
+                    <div class="uc-label">UC</div>
                     <div class="price">$29.99</div>
                 </div>
                 <div class="package" data-uc="1800" data-price="74.99">
-                    <div class="uc-icon">💎</div>
-                    <div class="uc-amount">1800 UC</div>
+                    <div class="uc-amount">1800</div>
+                    <div class="uc-label">UC</div>
                     <div class="price">$74.99</div>
                 </div>
                 <div class="package" data-uc="3850" data-price="149.99">
-                    <div class="uc-icon">💎💎</div>
-                    <div class="uc-amount">3850 UC</div>
+                    <div class="uc-amount">3850</div>
+                    <div class="uc-label">UC</div>
                     <div class="price">$149.99</div>
                 </div>
                 <div class="package" data-uc="8100" data-price="299.99">
-                    <div class="uc-icon">👑</div>
-                    <div class="uc-amount">8100 UC</div>
+                    <div class="package-ribbon">أكبر وفرة</div>
+                    <div class="uc-amount">8100</div>
+                    <div class="uc-label">UC</div>
                     <div class="price">$299.99</div>
                 </div>
             </div>
 
-            <h2>اختر طريقة الدفع</h2>
+            <h2><span class="section-icon">💳</span> اختر طريقة الدفع</h2>
             <div class="payment-methods">
                 <div class="payment-method" data-method="visa">
                     <span class="payment-icon">💳</span>
@@ -87,8 +109,8 @@
                 </div>
             </div>
 
-            <div class="summary" id="summary" style="display: none;">
-                <h3>ملخص الطلب</h3>
+            <div class="summary glass" id="summary" style="display: none;">
+                <h3>📋 ملخص الطلب</h3>
                 <div class="summary-row">
                     <span>معرف اللاعب:</span>
                     <span id="summaryId">-</span>
@@ -111,12 +133,17 @@
                 </div>
             </div>
 
-            <button class="buy-btn" id="buyBtn" disabled>اشحن الآن</button>
+            <button class="buy-btn" id="buyBtn" disabled>
+                <span>اشحن الآن</span>
+                <span class="btn-icon">⚡</span>
+            </button>
         </div>
 
         <footer>
-            <p>هذا موقع تعليمي فقط - جميع الأسعار تقريبية</p>
-            <a href="admin.html" class="admin-link">🔒 لوحة التحكم</a>
+            <div class="footer-content">
+                <p>هذا موقع تعليمي فقط - جميع الأسعار تقريبية</p>
+                <a href="admin.html" class="admin-link">🔒 لوحة التحكم</a>
+            </div>
         </footer>
     </div>
 
